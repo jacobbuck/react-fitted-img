@@ -16,11 +16,13 @@ function FittedImg(props) {
 	return supports ?
 		React.createElement('img', assign({}, restProps, {
 			alt: props.alt,
+			height: props.height,
 			src: props.src,
 			style: assign({}, props.style, {
 				objectFit: props.fit,
 				objectPosition: props.position
-			})
+			}),
+			width: props.width
 		})) :
 		React.createElement('div', assign({}, restProps, {
 			'aria-label': props.alt,
@@ -28,7 +30,9 @@ function FittedImg(props) {
 			style: assign({}, props.style, {
 				backgroundImage: 'url("' + props.src + '")',
 				backgroundPosition: props.position,
-				backgroundSize: props.fit.replace('fill', '100% 100%').replace('none', 'auto')
+				backgroundSize: props.fit.replace('fill', '100% 100%').replace('none', 'auto'),
+				height: props.height ? props.height + 'px' : null,
+				width: props.width ? props.width + 'px' : null
 			})
 		}));
 };
@@ -36,9 +40,17 @@ function FittedImg(props) {
 FittedImg.propTypes = {
 	alt: React.PropTypes.string,
 	fit: React.PropTypes.oneOf(['fill', 'contain', 'cover', 'none']),
+	height: React.PropTypes.oneOfType([
+		React.PropTypes.string,
+		React.PropTypes.number
+	]),
 	position: React.PropTypes.string,
 	src: React.PropTypes.string.isRequired,
-	style: React.PropTypes.object
+	style: React.PropTypes.object,
+	width: React.PropTypes.oneOfType([
+		React.PropTypes.string,
+		React.PropTypes.number
+  ]),
 };
 
 FittedImg.defaultProps = {
