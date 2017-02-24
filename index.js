@@ -24,13 +24,14 @@ function FittedImg(props) {
 			}),
 			width: props.width
 		})) :
-		React.createElement('div', assign({}, restProps, {
+		React.createElement('span', assign({}, restProps, {
 			'aria-label': props.alt,
 			role: 'img',
 			style: assign({}, props.style, {
 				backgroundImage: 'url("' + props.src + '")',
 				backgroundPosition: props.position,
 				backgroundSize: props.fit.replace('fill', '100% 100%').replace('none', 'auto'),
+				display: 'inline-block',
 				height: props.height ? props.height + 'px' : null,
 				width: props.width ? props.width + 'px' : null
 			})
