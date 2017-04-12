@@ -52,7 +52,7 @@ FittedImg.propTypes = {
   width: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number
-  ]),
+  ])
 };
 
 FittedImg.defaultProps = {

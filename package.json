@@ -1,6 +1,6 @@
 {
   "name": "react-fitted-img",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "React component for fitting and positioning images",
   "main": "index.js",
   "scripts": {
