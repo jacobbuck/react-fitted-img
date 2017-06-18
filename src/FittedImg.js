@@ -18,23 +18,23 @@ const FittedImg = ({
   ...restProps
 }) =>
   supports
-    ? React.createElement("img", {
-        ...restProps,
-        alt: alt,
-        height: height,
-        src: src,
-        style: {
+    ? <img
+        {...restProps}
+        alt={alt}
+        height={height}
+        src={src}
+        style={{
           ...style,
           objectFit: fit,
           objectPosition: position
-        },
-        width: width
-      })
-    : React.createElement("span", {
-        ...restProps,
-        "aria-label": alt,
-        role: "img",
-        style: {
+        }}
+        width={width}
+      />
+    : <span
+        {...restProps}
+        aria-label={alt}
+        role="img"
+        style={{
           ...style,
           backgroundImage: `url("${src}")`,
           backgroundPosition: position,
@@ -44,8 +44,8 @@ const FittedImg = ({
           display: "inline-block",
           height: height ? `${height}px` : null,
           width: width ? `${width}px` : null
-        }
-      });
+        }}
+      />;
 
 FittedImg.propTypes = {
   alt: PropTypes.string,
