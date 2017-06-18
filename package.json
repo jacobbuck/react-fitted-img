@@ -30,7 +30,6 @@
   },
   "homepage": "https://github.com/jacobbuck/react-fitted-img#readme",
   "dependencies": {
-    "lodash": "^4.17.2",
     "prop-types": "^15.5.7"
   },
   "peerDependencies": {
