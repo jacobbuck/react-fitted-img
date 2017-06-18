@@ -1,63 +1,65 @@
-'use strict';
+import PropTypes from "prop-types";
+import React from "react";
 
-var assign = require('lodash/assign');
-var keys = require('lodash/keys');
-var omit = require('lodash/omit');
-var PropTypes = require('prop-types');
-var React = require('react');
-
-var supports = window.CSS &&
+const supports =
+  window.CSS &&
   CSS.supports &&
-  CSS.supports('object-fit', 'cover') &&
-  CSS.supports('object-position', '0 0');
+  CSS.supports("object-fit", "cover") &&
+  CSS.supports("object-position", "0 0");
 
-function FittedImg(props) {
-  var restProps = omit(props, keys(FittedImg.propTypes));
-
-  return supports ?
-    React.createElement('img', assign({}, restProps, {
-      alt: props.alt,
-      height: props.height,
-      src: props.src,
-      style: assign({}, props.style, {
-        objectFit: props.fit,
-        objectPosition: props.position
-      }),
-      width: props.width
-    })) :
-    React.createElement('span', assign({}, restProps, {
-      'aria-label': props.alt,
-      role: 'img',
-      style: assign({}, props.style, {
-        backgroundImage: 'url("' + props.src + '")',
-        backgroundPosition: props.position,
-        backgroundSize: props.fit.replace('fill', '100% 100%').replace('none', 'auto'),
-        display: 'inline-block',
-        height: props.height ? props.height + 'px' : null,
-        width: props.width ? props.width + 'px' : null
+const FittedImg = ({
+  alt,
+  fit,
+  height,
+  position,
+  src,
+  style,
+  width,
+  ...restProps
+}) =>
+  supports
+    ? React.createElement("img", {
+        ...restProps,
+        alt: alt,
+        height: height,
+        src: src,
+        style: {
+          ...style,
+          objectFit: fit,
+          objectPosition: position
+        },
+        width: width
       })
-    }));
-};
+    : React.createElement("span", {
+        ...restProps,
+        "aria-label": alt,
+        role: "img",
+        style: {
+          ...style,
+          backgroundImage: `url("${src}")`,
+          backgroundPosition: position,
+          backgroundSize: fit
+            .replace("fill", "100% 100%")
+            .replace("none", "auto"),
+          display: "inline-block",
+          height: height ? `${height}px` : null,
+          width: width ? `${width}px` : null
+        }
+      });
 
 FittedImg.propTypes = {
   alt: PropTypes.string,
-  fit: PropTypes.oneOf(['fill', 'contain', 'cover', 'none']),
-  height: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number
-  ]),
+  fit: PropTypes.oneOf(["fill", "contain", "cover", "none"]),
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   position: PropTypes.string,
   src: PropTypes.string.isRequired,
   style: PropTypes.object,
-  width: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number
-  ])
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
 FittedImg.defaultProps = {
-  fit: 'fill',
-  position: '50% 50%'
+  fit: "fill",
+  position: "50% 50%"
 };
 
-module.exports = FittedImg;
+export default FittedImg;
