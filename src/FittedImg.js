@@ -3,6 +3,7 @@
 var assign = require('lodash/assign');
 var keys = require('lodash/keys');
 var omit = require('lodash/omit');
+var PropTypes = require('prop-types');
 var React = require('react');
 
 var supports = window.CSS &&
@@ -39,19 +40,19 @@ function FittedImg(props) {
 };
 
 FittedImg.propTypes = {
-  alt: React.PropTypes.string,
-  fit: React.PropTypes.oneOf(['fill', 'contain', 'cover', 'none']),
-  height: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.number
+  alt: PropTypes.string,
+  fit: PropTypes.oneOf(['fill', 'contain', 'cover', 'none']),
+  height: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
   ]),
-  position: React.PropTypes.string,
-  src: React.PropTypes.string.isRequired,
-  style: React.PropTypes.object,
-  width: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.number
-  ]),
+  position: PropTypes.string,
+  src: PropTypes.string.isRequired,
+  style: PropTypes.object,
+  width: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ])
 };
 
 FittedImg.defaultProps = {
