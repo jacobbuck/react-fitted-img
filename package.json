@@ -1,6 +1,6 @@
 {
   "name": "react-fitted-img",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React component for fitting and positioning images",
   "main": "lib/FittedImg.js",
   "files": [
@@ -35,10 +35,10 @@
   },
   "homepage": "https://github.com/jacobbuck/react-fitted-img#readme",
   "dependencies": {
-    "prop-types": "^15.5.7"
+    "prop-types": "^15.5.10"
   },
   "peerDependencies": {
-    "react": "^15.4.1"
+    "react": "^15.6.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
