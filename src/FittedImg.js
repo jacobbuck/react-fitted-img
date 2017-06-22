@@ -26,7 +26,7 @@ const FittedImg = ({
         style={{
           ...style,
           objectFit: fit,
-          objectPosition: position
+          objectPosition: position,
         }}
         width={width}
       />
@@ -42,8 +42,8 @@ const FittedImg = ({
             .replace("fill", "100% 100%")
             .replace("none", "auto"),
           display: "inline-block",
-          height: height ? `${height}px` : null,
-          width: width ? `${width}px` : null
+          height: isFinite(height) ? `${height}px` : height,
+          width: isFinite(width) ? `${width}px` : width,
         }}
       />;
 
@@ -54,12 +54,12 @@ FittedImg.propTypes = {
   position: PropTypes.string,
   src: PropTypes.string.isRequired,
   style: PropTypes.object,
-  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 FittedImg.defaultProps = {
   fit: "fill",
-  position: "50% 50%"
+  position: "50% 50%",
 };
 
 export default FittedImg;
