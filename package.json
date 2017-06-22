@@ -1,6 +1,6 @@
 {
   "name": "react-fitted-img",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React component for fitting and positioning images",
   "main": "lib/FittedImg.js",
   "files": [
@@ -16,17 +16,17 @@
     "url": "git+https://github.com/jacobbuck/react-fitted-img.git"
   },
   "keywords": [
-    "react",
     "component",
-    "img",
-    "image",
-    "object-fit",
-    "object-position",
-    "fit",
-    "fill",
     "contain",
     "cover",
-    "position"
+    "fill",
+    "fit",
+    "image",
+    "img",
+    "object-fit",
+    "object-position",
+    "position",
+    "react"
   ],
   "author": "Jacob Buck <buck.jacob@gmail.com>",
   "license": "MIT",
