@@ -35,6 +35,9 @@ const FittedImg = ({
         aria-label={alt}
         role="img"
         style={{
+          display: "inline-block",
+          height: isFinite(height) ? `${height}px` : height,
+          width: isFinite(width) ? `${width}px` : width,
           ...style,
           backgroundImage: `url("${src}")`,
           backgroundPosition: position,
@@ -42,9 +45,6 @@ const FittedImg = ({
           backgroundSize: fit
             .replace("fill", "100% 100%")
             .replace("none", "auto"),
-          display: "inline-block",
-          height: isFinite(height) ? `${height}px` : height,
-          width: isFinite(width) ? `${width}px` : width,
         }}
       />;
 
