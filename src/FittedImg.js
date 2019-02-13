@@ -38,6 +38,7 @@ const FittedImg = ({
           ...style,
           backgroundImage: `url("${src}")`,
           backgroundPosition: position,
+          backgroundRepeat: "no-repeat",
           backgroundSize: fit
             .replace("fill", "100% 100%")
             .replace("none", "auto"),
