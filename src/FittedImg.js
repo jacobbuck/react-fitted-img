@@ -1,11 +1,11 @@
-import PropTypes from "prop-types";
-import React from "react";
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const supports =
   window.CSS &&
   CSS.supports &&
-  CSS.supports("object-fit", "cover") &&
-  CSS.supports("object-position", "0 0");
+  CSS.supports('object-fit', 'cover') &&
+  CSS.supports('object-position', '0 0');
 
 const FittedImg = ({
   alt,
@@ -16,9 +16,10 @@ const FittedImg = ({
   style,
   width,
   ...restProps
-}) =>
-  supports
-    ? <img
+}) => {
+  if (supports) {
+    return (
+      <img
         {...restProps}
         alt={alt}
         height={height}
@@ -30,27 +31,32 @@ const FittedImg = ({
         }}
         width={width}
       />
-    : <span
-        {...restProps}
-        aria-label={alt}
-        role="img"
-        style={{
-          display: "inline-block",
-          height: isFinite(height) ? `${height}px` : height,
-          width: isFinite(width) ? `${width}px` : width,
-          ...style,
-          backgroundImage: `url("${src}")`,
-          backgroundPosition: position,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: fit
-            .replace("fill", "100% 100%")
-            .replace("none", "auto"),
-        }}
-      />;
+    );
+  }
+  return (
+    <span
+      {...restProps}
+      aria-label={alt}
+      role="img"
+      style={{
+        display: 'inline-block',
+        height: isFinite(height) ? `${height}px` : height,
+        width: isFinite(width) ? `${width}px` : width,
+        ...style,
+        backgroundImage: `url("${src}")`,
+        backgroundPosition: position,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: fit
+          .replace('fill', '100% 100%')
+          .replace('none', 'auto'),
+      }}
+    />
+  );
+};
 
 FittedImg.propTypes = {
   alt: PropTypes.string,
-  fit: PropTypes.oneOf(["fill", "contain", "cover", "none"]),
+  fit: PropTypes.oneOf(['fill', 'contain', 'cover', 'none']),
   height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   position: PropTypes.string,
   src: PropTypes.string.isRequired,
@@ -59,8 +65,8 @@ FittedImg.propTypes = {
 };
 
 FittedImg.defaultProps = {
-  fit: "fill",
-  position: "50% 50%",
+  fit: 'fill',
+  position: '50% 50%',
 };
 
 export default FittedImg;
