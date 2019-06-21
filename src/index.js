@@ -1,11 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-
-const supports =
-  window.CSS &&
-  CSS.supports &&
-  CSS.supports('object-fit', 'cover') &&
-  CSS.supports('object-position', '0 0');
+import isSupported from './isSupported';
 
 const FittedImg = props => {
   const {
@@ -19,7 +14,7 @@ const FittedImg = props => {
     ...restProps
   } = props;
 
-  if (supports) {
+  if (isSupported()) {
     return (
       <img
         {...restProps}
