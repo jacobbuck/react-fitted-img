@@ -7,16 +7,18 @@ const supports =
   CSS.supports('object-fit', 'cover') &&
   CSS.supports('object-position', '0 0');
 
-const FittedImg = ({
-  alt,
-  fit,
-  height,
-  position,
-  src,
-  style,
-  width,
-  ...restProps
-}) => {
+const FittedImg = props => {
+  const {
+    alt,
+    fit,
+    height,
+    position,
+    src,
+    style,
+    width,
+    ...restProps
+  } = props;
+
   if (supports) {
     return (
       <img
@@ -33,6 +35,7 @@ const FittedImg = ({
       />
     );
   }
+
   return (
     <span
       {...restProps}
