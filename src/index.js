@@ -2,17 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import isSupported from './isSupported';
 
-const FittedImg = props => {
-  const {
-    alt,
-    fit,
-    height,
-    position,
-    src,
-    style,
-    width,
-    ...restProps
-  } = props;
+const FittedImg = (props) => {
+  const { alt, fit, height, position, src, style, width, ...restProps } = props;
 
   if (isSupported()) {
     return (
