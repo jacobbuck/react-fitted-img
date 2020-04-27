@@ -43,6 +43,11 @@ const FittedImg = (props) => {
   );
 };
 
+FittedImg.defaultProps = {
+  fit: 'fill',
+  position: '50% 50%',
+};
+
 FittedImg.propTypes = {
   alt: PropTypes.string,
   fit: PropTypes.oneOf(['fill', 'contain', 'cover', 'none']),
@@ -51,11 +56,6 @@ FittedImg.propTypes = {
   src: PropTypes.string.isRequired,
   style: PropTypes.object,
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-};
-
-FittedImg.defaultProps = {
-  fit: 'fill',
-  position: '50% 50%',
 };
 
 export default FittedImg;
