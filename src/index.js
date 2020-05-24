@@ -44,8 +44,12 @@ const FittedImg = (props) => {
 };
 
 FittedImg.defaultProps = {
+  alt: null,
   fit: 'fill',
+  height: 0,
   position: '50% 50%',
+  style: null,
+  width: 0, 
 };
 
 FittedImg.propTypes = {
