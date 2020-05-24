@@ -19,7 +19,7 @@ describe('when object-fit and object-position is supported', () => {
     expect(testRenderer.toJSON()).toMatchInlineSnapshot(`
       <img
         alt={null}
-        height={0}
+        height={null}
         src="/test.jpeg"
         style={
           Object {
@@ -27,7 +27,7 @@ describe('when object-fit and object-position is supported', () => {
             "objectPosition": "50% 50%",
           }
         }
-        width={0}
+        width={null}
       />
     `);
   });
@@ -125,8 +125,8 @@ describe('when object-fit and object-position is not supported', () => {
             "backgroundRepeat": "no-repeat",
             "backgroundSize": "100% 100%",
             "display": "inline-block",
-            "height": "0px",
-            "width": "0px",
+            "height": "nullpx",
+            "width": "nullpx",
           }
         }
       />
