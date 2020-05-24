@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import appendPx from './appendPx';
 import isSupported from './isSupported';
 
 const FittedImg = (props) => {
@@ -29,8 +30,8 @@ const FittedImg = (props) => {
       role="img"
       style={{
         display: 'inline-block',
-        height: isFinite(height) ? `${height}px` : height,
-        width: isFinite(width) ? `${width}px` : width,
+        height: appendPx(height),
+        width: appendPx(width),
         ...style,
         backgroundImage: `url("${src}")`,
         backgroundPosition: position,
