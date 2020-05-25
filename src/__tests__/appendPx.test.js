@@ -23,7 +23,7 @@ test('returns non-numerical strings', () => {
 
 test('returns invalid values', () => {
   expect(appendPx(null)).toBeNull();
-  expect(appendPx(undefined)).toBeNndefined();
+  expect(appendPx(undefined)).toBeUndefined();
   const obj = {};
   expect(appendPx(obj)).toBe(obj);
   const arr = [];
