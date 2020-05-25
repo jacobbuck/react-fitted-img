@@ -1,3 +1,4 @@
-const appendPx = value => isFinite(value) ? `${value}px` : value;
+const appendPx = (value) =>
+  isFinite(value) && !isNaN(parseFloat(value)) ? `${value}px` : value;
 
 export default appendPx;

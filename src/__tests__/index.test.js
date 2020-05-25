@@ -125,8 +125,8 @@ describe('when object-fit and object-position is not supported', () => {
             "backgroundRepeat": "no-repeat",
             "backgroundSize": "100% 100%",
             "display": "inline-block",
-            "height": "nullpx",
-            "width": "nullpx",
+            "height": null,
+            "width": null,
           }
         }
       />
