@@ -50,7 +50,7 @@ FittedImg.defaultProps = {
   height: null,
   position: '50% 50%',
   style: null,
-  width: null, 
+  width: null,
 };
 
 FittedImg.propTypes = {
