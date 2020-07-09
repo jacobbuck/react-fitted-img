@@ -47,13 +47,13 @@
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-react": "^7.9.4",
+    "@rollup/plugin-babel": "^5.0.4",
     "husky": "^4.2.5",
     "jest": "^26.0.1",
     "lint-staged": "^10.2.6",
     "prettier": "^2.0.5",
     "react": "^16.13.1",
     "react-test-renderer": "^16.13.1",
-    "rollup": "^2.10.9",
-    "rollup-plugin-babel": "^4.4.0"
+    "rollup": "^2.10.9"
   }
 }
