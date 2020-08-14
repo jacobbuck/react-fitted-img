@@ -3,7 +3,7 @@ import React from 'react';
 import appendPx from './appendPx';
 import isSupported from './isSupported';
 
-const FittedImg = (props) => {
+const FittedImg = React.forwardRef((props, ref) => {
   const { alt, fit, height, position, src, style, width, ...rest } = props;
 
   if (isSupported()) {
@@ -12,6 +12,7 @@ const FittedImg = (props) => {
         {...rest}
         alt={alt}
         height={height}
+        ref={ref}
         src={src}
         style={{
           ...style,
@@ -27,6 +28,7 @@ const FittedImg = (props) => {
     <span
       {...rest}
       aria-label={alt}
+      ref={ref}
       role="img"
       style={{
         display: 'inline-block',
@@ -42,7 +44,7 @@ const FittedImg = (props) => {
       }}
     />
   );
-};
+});
 
 FittedImg.defaultProps = {
   alt: null,
