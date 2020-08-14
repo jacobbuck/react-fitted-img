@@ -11,6 +11,6 @@ export default {
     babel({
       babelHelpers: 'runtime',
       plugins: ['@babel/plugin-transform-runtime'],
-    })
+    }),
   ],
 };
