@@ -4,12 +4,12 @@ import appendPx from './appendPx';
 import isSupported from './isSupported';
 
 const FittedImg = (props) => {
-  const { alt, fit, height, position, src, style, width, ...restProps } = props;
+  const { alt, fit, height, position, src, style, width, ...rest } = props;
 
   if (isSupported()) {
     return (
       <img
-        {...restProps}
+        {...rest}
         alt={alt}
         height={height}
         src={src}
@@ -25,7 +25,7 @@ const FittedImg = (props) => {
 
   return (
     <span
-      {...restProps}
+      {...rest}
       aria-label={alt}
       role="img"
       style={{
