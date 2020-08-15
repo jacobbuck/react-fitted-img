@@ -26,10 +26,10 @@ const FittedImg = React.forwardRef((props, ref) => {
 
   return (
     <span
-      {...rest}
       aria-label={alt}
-      ref={ref}
       role="img"
+      {...rest}
+      ref={ref}
       style={{
         display: 'inline-block',
         height: appendPx(height),
