@@ -1,6 +1,6 @@
 # react-fitted-img
 
-React functional stateless component for fitting and positioning images.
+Lightweight component for fitting and positioning images with cross-browser support. 
 
 ## Usage
 
