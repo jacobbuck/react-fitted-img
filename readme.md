@@ -25,6 +25,6 @@ import FittedImg from 'react-fitted-img';
 
 For browsers that don't support [`object-fit`/`object-position`](https://caniuse.com/#feat=object-fit), the fallback doesn't support:
 
-- Event handlers, i.e. `onError` and `onLoad`.
-- Other [image attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#Attributes) i.e. `crossorigin`, `loading`, `sizes`, `srcset`, `usemap`, etc…
+- Event handlers like `onError` and `onLoad`.
+- Other [image attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#Attributes), such as `crossorigin`, `loading`, `sizes`, `srcset`, `usemap`, etc…
 - CSS background images.
