@@ -1,6 +1,6 @@
 # react-fitted-img
 
-Lightweight component for fitting and positioning images with cross-browser support. 
+Lightweight component for fitting and positioning images with cross-browser support.
 
 ## Usage
 
