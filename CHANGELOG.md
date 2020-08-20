@@ -86,7 +86,7 @@
 
 ### Changed
 
-- Update `height` and `width` props to handle values with units, e.g. `100%`.
+- Update `height` and `width` props to handle values with units, e.g. `width="100%"`.
 
 ## v1.0.1 - 2017-06-18
 
