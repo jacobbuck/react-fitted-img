@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Changed
+
+- Updated `propTypes` to only be defined in non-production environments.
+
 ## v1.6.0 - 2020-08-15
 
 ### Changed
