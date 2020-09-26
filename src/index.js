@@ -3,28 +3,25 @@ import * as React from 'react';
 import appendPx from './appendPx';
 import isSupported from './isSupported';
 
-const FittedImg = React.forwardRef(function FittedImg(props, ref) {
-  const { alt, fit, height, position, src, style, width, ...rest } = props;
-
-  if (isSupported()) {
-    return (
-      <img
-        {...rest}
-        alt={alt}
-        height={height}
-        ref={ref}
-        src={src}
-        style={{
-          ...style,
-          objectFit: fit,
-          objectPosition: position,
-        }}
-        width={width}
-      />
-    );
-  }
-
-  return (
+const FittedImg = React.forwardRef(function FittedImg(
+  { alt, fit, height, position, src, style, width, ...rest },
+  ref
+) {
+  return isSupported() ? (
+    <img
+      {...rest}
+      alt={alt}
+      height={height}
+      ref={ref}
+      src={src}
+      style={{
+        ...style,
+        objectFit: fit,
+        objectPosition: position,
+      }}
+      width={width}
+    />
+  ) : (
     <span
       aria-label={alt}
       role="img"
