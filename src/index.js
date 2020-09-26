@@ -4,7 +4,16 @@ import appendPx from './appendPx';
 import isSupported from './isSupported';
 
 const FittedImg = React.forwardRef(function FittedImg(
-  { alt, fit, height, position, src, style, width, ...rest },
+  {
+    alt = null,
+    fit = 'fill',
+    height = null,
+    position = '50% 50%',
+    src,
+    style = null,
+    width = null,
+    ...rest
+  },
   ref
 ) {
   return isSupported() ? (
@@ -42,15 +51,6 @@ const FittedImg = React.forwardRef(function FittedImg(
     />
   );
 });
-
-FittedImg.defaultProps = {
-  alt: null,
-  fit: 'fill',
-  height: null,
-  position: '50% 50%',
-  style: null,
-  width: null,
-};
 
 if (process.env.NODE_ENV !== 'production') {
   FittedImg.propTypes = {
