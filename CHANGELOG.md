@@ -4,7 +4,12 @@
 
 ### Changed
 
+- Changed render function to be named.
 - Updated `propTypes` to only be defined in non-production environments.
+
+### Removed
+
+- Removed `defaultProps` in favour of default values in object destructuring.
 
 ## v1.6.0 - 2020-08-15
 
