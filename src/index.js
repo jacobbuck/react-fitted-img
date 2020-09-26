@@ -3,7 +3,7 @@ import React from 'react';
 import appendPx from './appendPx';
 import isSupported from './isSupported';
 
-const FittedImg = React.forwardRef((props, ref) => {
+const FittedImg = React.forwardRef(function FittedImg(props, ref) {
   const { alt, fit, height, position, src, style, width, ...rest } = props;
 
   if (isSupported()) {
