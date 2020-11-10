@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Added
+
+- Added source maps to build output.
+
 ### Changed
 
 - Changed render function to be named.
