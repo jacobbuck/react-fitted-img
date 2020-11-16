@@ -52,16 +52,14 @@ const FittedImg = React.forwardRef(function FittedImg(
   );
 });
 
-if (process.env.NODE_ENV !== 'production') {
-  FittedImg.propTypes = {
-    alt: PropTypes.string,
-    fit: PropTypes.oneOf(['fill', 'contain', 'cover', 'none']),
-    height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    position: PropTypes.string,
-    src: PropTypes.string.isRequired,
-    style: PropTypes.object,
-    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  };
-}
+FittedImg.propTypes = {
+  alt: PropTypes.string,
+  fit: PropTypes.oneOf(['fill', 'contain', 'cover', 'none']),
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  position: PropTypes.string,
+  src: PropTypes.string.isRequired,
+  style: PropTypes.object,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+};
 
 export default FittedImg;
