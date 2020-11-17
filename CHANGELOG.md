@@ -8,7 +8,8 @@
 
 ### Changed
 
-- Changed render function to be named.
+- Bumped up version of [@babel/runtime](https://www.npmjs.com/package/@babel/runtime) to v7.12.5.
+- Updated render function to a named function.
 - Updated `propTypes` to only be defined in non-production environments.
 
 ### Removed
