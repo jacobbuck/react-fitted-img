@@ -6,6 +6,7 @@
 
 - **BREAKING** Changed CSS feature detection to happen only on component mount—using hooks!
 - **BREAKING** Changed JSX transform to use new React JSX runtime.
+- **BREAKING** Updated [react](https://www.npmjs.com/package/react) peerDependency to support new React JSX runtime.
 - Changed behaviour for server-side rendering to render supported `<img>` element.
 - Updated devDependencies.
 
