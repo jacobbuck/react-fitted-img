@@ -88,11 +88,7 @@ describe('when object-fit and object-position is supported', () => {
 
 describe('when object-fit and object-position is not supported', () => {
   beforeAll(() => {
-    window.CSS = { supports: jest.fn(() => false) };
-  });
-
-  afterAll(() => {
-    delete window.CSS;
+    expect(window).not.toHaveProperty(['CSS', 'supports']);
   });
 
   test('renders <span> fallback element', () => {
