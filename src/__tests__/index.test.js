@@ -1,17 +1,13 @@
-import React from 'react';
 import TestRenderer from 'react-test-renderer';
 import FittedImg from '../';
-import isSupported from '../isSupported';
-
-jest.mock('../isSupported');
 
 describe('when object-fit and object-position is supported', () => {
   beforeAll(() => {
-    isSupported.mockImplementation(() => true);
+    window.CSS = { supports: jest.fn(() => true) };
   });
 
   afterAll(() => {
-    isSupported.mockReset();
+    delete window.CSS;
   });
 
   test('renders <img> element', () => {
@@ -92,11 +88,11 @@ describe('when object-fit and object-position is supported', () => {
 
 describe('when object-fit and object-position is not supported', () => {
   beforeAll(() => {
-    isSupported.mockImplementation(() => false);
+    window.CSS = { supports: jest.fn(() => false) };
   });
 
   afterAll(() => {
-    isSupported.mockReset();
+    delete window.CSS;
   });
 
   test('renders <span> fallback element', () => {
