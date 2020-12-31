@@ -78,27 +78,14 @@ describe('when object-fit and object-position is supported', () => {
     );
   });
 
-  describe('handles width and height props', () => {
-    test('as numbers', () => {
-      const testRenderer = TestRenderer.create(
-        <FittedImg src="/test.jpeg" width={400} height={300} />
-      );
-      const testInstance = testRenderer.root;
-      expect(testInstance.findByType('img').props).toMatchObject({
-        width: 400,
-        height: 300,
-      });
-    });
-
-    test('as strings', () => {
-      const testRenderer = TestRenderer.create(
-        <FittedImg src="/test.jpeg" width="100%" height="300px" />
-      );
-      const testInstance = testRenderer.root;
-      expect(testInstance.findByType('img').props).toMatchObject({
-        width: '100%',
-        height: '300px',
-      });
+  test('handles width and height props', () => {
+    const testRenderer = TestRenderer.create(
+      <FittedImg src="/test.jpeg" width={400} height={300} />
+    );
+    const testInstance = testRenderer.root;
+    expect(testInstance.findByType('img').props).toMatchObject({
+      width: 400,
+      height: 300,
     });
   });
 });
@@ -211,33 +198,17 @@ describe('when object-fit and object-position is not supported', () => {
     );
   });
 
-  describe('handles width and height props', () => {
-    test('as numbers', () => {
-      const testRenderer = TestRenderer.create(
-        <FittedImg src="/test.jpeg" width={400} height={300} />
-      );
-      const testInstance = testRenderer.root;
-      expect(testInstance.findByType('span').props).toHaveProperty(
-        'style',
-        expect.objectContaining({
-          width: '400px',
-          height: '300px',
-        })
-      );
-    });
-
-    test('as strings', () => {
-      const testRenderer = TestRenderer.create(
-        <FittedImg src="/test.jpeg" width="100%" height="300px" />
-      );
-      const testInstance = testRenderer.root;
-      expect(testInstance.findByType('span').props).toHaveProperty(
-        'style',
-        expect.objectContaining({
-          width: '100%',
-          height: '300px',
-        })
-      );
-    });
+  test('handles width and height props', () => {
+    const testRenderer = TestRenderer.create(
+      <FittedImg src="/test.jpeg" width={400} height={300} />
+    );
+    const testInstance = testRenderer.root;
+    expect(testInstance.findByType('span').props).toHaveProperty(
+      'style',
+      expect.objectContaining({
+        width: '400px',
+        height: '300px',
+      })
+    );
   });
 });
