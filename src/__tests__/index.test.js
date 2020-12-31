@@ -1,4 +1,4 @@
-import TestRenderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import FittedImg from '../';
 
 describe('when object-fit and object-position is supported', () => {
@@ -11,47 +11,33 @@ describe('when object-fit and object-position is supported', () => {
   });
 
   test('renders <img> element', () => {
-    const testRenderer = TestRenderer.create(<FittedImg src="/test.jpeg" />);
-    expect(testRenderer.toJSON()).toMatchInlineSnapshot(`
-      <img
-        alt={null}
-        height={null}
-        src="/test.jpeg"
-        style={
-          Object {
-            "objectFit": "fill",
-            "objectPosition": "50% 50%",
-          }
-        }
-        width={null}
-      />
+    const { getByRole } = render(<FittedImg src="/test.jpeg" />);
+    expect(getByRole('img')).toHaveAttribute('src', '/test.jpeg');
+    expect(getByRole('img')).toHaveStyle(`
+      object-fit: fill;
+      object-position: 50% 50%;
     `);
   });
 
   test('handles fit and position props', () => {
-    const testRenderer = TestRenderer.create(
+    const { getByRole } = render(
       <FittedImg src="/test.jpeg" fit="cover" position="25% 75%" />
     );
-    const testInstance = testRenderer.root;
-    expect(testInstance.findByType('img').props).toHaveProperty('style', {
-      objectFit: 'cover',
-      objectPosition: '25% 75%',
-    });
+    expect(getByRole('img')).toHaveStyle(`
+      object-fit: cover;
+      object-position: 25% 75%;
+    `);
   });
 
   test('handles alt prop', () => {
-    const testRenderer = TestRenderer.create(
+    const { getByRole } = render(
       <FittedImg src="/test.jpeg" alt="Test image" />
     );
-    const testInstance = testRenderer.root;
-    expect(testInstance.findByType('img').props).toHaveProperty(
-      'alt',
-      'Test image'
-    );
+    expect(getByRole('img')).toHaveAttribute('alt', 'Test image');
   });
 
   test('handles style prop', () => {
-    const testRenderer = TestRenderer.create(
+    const { getByRole } = render(
       <FittedImg
         src="/test.jpeg"
         style={{
@@ -62,27 +48,20 @@ describe('when object-fit and object-position is supported', () => {
         }}
       />
     );
-    const testInstance = testRenderer.root;
-    expect(testInstance.findByType('img').props).toHaveProperty(
-      'style',
-      expect.objectContaining({
-        display: 'block',
-        width: '100%',
-        opacity: '0.5',
-        margin: '10px',
-      })
-    );
+    expect(getByRole('img')).toHaveStyle(`
+      display: block;
+      width: 100%;
+      opacity: 0.5;
+      margin: 10px;
+    `);
   });
 
   test('handles width and height props', () => {
-    const testRenderer = TestRenderer.create(
+    const { getByRole } = render(
       <FittedImg src="/test.jpeg" width={400} height={300} />
     );
-    const testInstance = testRenderer.root;
-    expect(testInstance.findByType('img').props).toMatchObject({
-      width: 400,
-      height: 300,
-    });
+    expect(getByRole('img')).toHaveAttribute('width', '400');
+    expect(getByRole('img')).toHaveAttribute('height', '300');
   });
 });
 
@@ -92,82 +71,52 @@ describe('when object-fit and object-position is not supported', () => {
   });
 
   test('renders <span> fallback element', () => {
-    const testRenderer = TestRenderer.create(<FittedImg src="/test.jpeg" />);
-    expect(testRenderer.toJSON()).toMatchInlineSnapshot(`
-      <span
-        aria-label={null}
-        role="img"
-        style={
-          Object {
-            "backgroundImage": "url(\\"/test.jpeg\\")",
-            "backgroundPosition": "50% 50%",
-            "backgroundRepeat": "no-repeat",
-            "backgroundSize": "100% 100%",
-            "display": "inline-block",
-            "height": null,
-            "width": null,
-          }
-        }
-      />
+    const { getByRole } = render(<FittedImg src="/test.jpeg" />);
+    expect(getByRole('img')).toHaveAttribute('role', 'img');
+    expect(getByRole('img')).toHaveStyle(`
+      background-image: url("/test.jpeg");
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      display: inline-block;
     `);
   });
 
   describe('handles fit and position props', () => {
-    test('passes to backgroundPostion and backgroundSize styles', () => {
-      const testRenderer = TestRenderer.create(
+    test('passes to background-postion and background-size styles', () => {
+      const { getByRole } = render(
         <FittedImg src="/test.jpeg" fit="cover" position="25% 75%" />
       );
-      const testInstance = testRenderer.root;
-      expect(testInstance.findByType('span').props).toHaveProperty(
-        'style',
-        expect.objectContaining({
-          backgroundPosition: '25% 75%',
-          backgroundSize: 'cover',
-        })
-      );
+      expect(getByRole('img')).toHaveStyle(`
+        background-position: 25% 75%;
+        background-size: cover;
+      `);
     });
 
-    test('replaces "fill" with "100% 100%"', () => {
-      const testRenderer = TestRenderer.create(
-        <FittedImg src="/test.jpeg" fit="fill" />
-      );
-      const testInstance = testRenderer.root;
-      expect(testInstance.findByType('span').props).toHaveProperty(
-        'style',
-        expect.objectContaining({
-          backgroundSize: '100% 100%',
-        })
-      );
+    test('replaces "fill" with "100% 100%" for background-size style', () => {
+      const { getByRole } = render(<FittedImg src="/test.jpeg" fit="fill" />);
+      expect(getByRole('img')).toHaveStyle(`
+        background-size: 100% 100%;
+      `);
     });
 
-    test('replaces "none" with auto', () => {
-      const testRenderer = TestRenderer.create(
-        <FittedImg src="/test.jpeg" fit="none" />
-      );
-      const testInstance = testRenderer.root;
-      expect(testInstance.findByType('span').props).toHaveProperty(
-        'style',
-        expect.objectContaining({
-          backgroundSize: 'auto',
-        })
-      );
+    test('replaces "none" with "auto" for background-size style', () => {
+      const { getByRole } = render(<FittedImg src="/test.jpeg" fit="none" />);
+      expect(getByRole('img')).toHaveStyle(`
+        background-size: auto;
+      `);
     });
   });
 
-  test('passes alt to aria-label', () => {
-    const testRenderer = TestRenderer.create(
+  test('passes alt prop to aria-label', () => {
+    const { getByRole } = render(
       <FittedImg src="/test.jpeg" alt="Test image" />
     );
-    const testInstance = testRenderer.root;
-    expect(testInstance.findByType('span').props).toHaveProperty(
-      'aria-label',
-      'Test image'
-    );
-    expect(testInstance.findByType('span').props).not.toHaveProperty('alt');
+    expect(getByRole('img')).toHaveAttribute('aria-label', 'Test image');
   });
 
   test('handles style prop', () => {
-    const testRenderer = TestRenderer.create(
+    const { getByRole } = render(
       <FittedImg
         src="/test.jpeg"
         style={{
@@ -178,29 +127,21 @@ describe('when object-fit and object-position is not supported', () => {
         }}
       />
     );
-    const testInstance = testRenderer.root;
-    expect(testInstance.findByType('span').props).toHaveProperty(
-      'style',
-      expect.objectContaining({
-        display: 'block',
-        width: '100%',
-        opacity: '0.5',
-        margin: '10px',
-      })
-    );
+    expect(getByRole('img')).toHaveStyle(`
+      display: block;
+      width: 100%;
+      opacity: 0.5;
+      margin: 10px;
+    `);
   });
 
   test('handles width and height props', () => {
-    const testRenderer = TestRenderer.create(
+    const { getByRole } = render(
       <FittedImg src="/test.jpeg" width={400} height={300} />
     );
-    const testInstance = testRenderer.root;
-    expect(testInstance.findByType('span').props).toHaveProperty(
-      'style',
-      expect.objectContaining({
-        width: '400px',
-        height: '300px',
-      })
-    );
+    expect(getByRole('img')).toHaveStyle(`
+      width: 400px;
+      height: 300px;
+    `);
   });
 });
