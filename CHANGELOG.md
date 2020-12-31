@@ -1,5 +1,18 @@
 # Changelog
 
+## Unreleased
+
+### Changed
+
+- **BREAKING** Changed CSS feature detection to happen only on component mount—using hooks!
+- **BREAKING** Changed JSX transform to use new React JSX runtime.
+- Changed behaviour for server-side rendering to render supported `<img>` element.
+- Updated devDependencies.
+
+### Removed
+
+- **BREAKING** Removed handling `height` and `width` props as strings containing numbers.
+
 ## v1.7.0 - 2020-11-17
 
 ### Added
