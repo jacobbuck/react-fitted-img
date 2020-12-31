@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import * as React from 'react';
-import appendPx from './appendPx';
 import isSupported from './isSupported';
 
 const FittedImg = React.forwardRef(function FittedImg(
@@ -38,8 +37,8 @@ const FittedImg = React.forwardRef(function FittedImg(
       ref={ref}
       style={{
         display: 'inline-block',
-        height: appendPx(height),
-        width: appendPx(width),
+        height: height ?? `${height}px`,
+        width: width ?? `${width}px`,
         ...style,
         backgroundImage: `url("${src}")`,
         backgroundPosition: position,
@@ -55,11 +54,11 @@ const FittedImg = React.forwardRef(function FittedImg(
 FittedImg.propTypes = {
   alt: PropTypes.string,
   fit: PropTypes.oneOf(['fill', 'contain', 'cover', 'none']),
-  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  height: PropTypes.number,
   position: PropTypes.string,
   src: PropTypes.string.isRequired,
   style: PropTypes.object,
-  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  width: PropTypes.number,
 };
 
 export default FittedImg;
