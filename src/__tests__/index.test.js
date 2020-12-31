@@ -13,6 +13,7 @@ describe('when object-fit and object-position is supported', () => {
   test('renders <img> element', () => {
     const { getByRole } = render(<FittedImg src="/test.jpeg" />);
     expect(getByRole('img')).toHaveAttribute('src', '/test.jpeg');
+    expect(getByRole('img')).toHaveProperty('tagName', 'IMG');
     expect(getByRole('img')).toHaveStyle(`
       object-fit: fill;
       object-position: 50% 50%;
@@ -73,6 +74,7 @@ describe('when object-fit and object-position is not supported', () => {
   test('renders <span> fallback element', () => {
     const { getByRole } = render(<FittedImg src="/test.jpeg" />);
     expect(getByRole('img')).toHaveAttribute('role', 'img');
+    expect(getByRole('img')).toHaveProperty('tagName', 'SPAN');
     expect(getByRole('img')).toHaveStyle(`
       background-image: url("/test.jpeg");
       background-position: 50% 50%;
