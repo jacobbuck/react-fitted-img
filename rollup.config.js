@@ -15,7 +15,7 @@ export default {
       sourcemap: true,
     },
   ],
-  external: [/@babel\/runtime/, 'prop-types', 'react'],
+  external: [/@babel\/runtime/, 'prop-types', /react/],
   plugins: [
     babel({
       babelHelpers: 'runtime',
