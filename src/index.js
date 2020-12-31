@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
-import * as React from 'react';
-import isSupported from './isSupported';
+import { forwardRef, useLayoutEffect, useState } from 'react';
 
-const FittedImg = React.forwardRef(function FittedImg(
+const FittedImg = forwardRef(function FittedImg(
   {
     alt = null,
     fit = 'fill',
@@ -15,7 +14,22 @@ const FittedImg = React.forwardRef(function FittedImg(
   },
   ref
 ) {
-  return isSupported() ? (
+  // Assume the browser supports CSS.supports() API and CSS3 object-fit/object-position.
+  const [supported, setSupported] = useState(true);
+
+  if (typeof window !== 'undefined') {
+    // Once mounted, we’ll properly check for browser support.
+    useLayoutEffect(() => {
+      setSupported(
+        typeof CSS !== 'undefined' &&
+          CSS.supports &&
+          CSS.supports('object-fit', 'cover') &&
+          CSS.supports('object-position', '0 0')
+      );
+    }, []);
+  }
+
+  return supported ? (
     <img
       {...rest}
       alt={alt}
