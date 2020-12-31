@@ -37,8 +37,8 @@ const FittedImg = React.forwardRef(function FittedImg(
       ref={ref}
       style={{
         display: 'inline-block',
-        height: height ?? `${height}px`,
-        width: width ?? `${width}px`,
+        height: Number.isFinite(height) ? `${height}px` : null,
+        width: Number.isFinite(width) ? `${width}px` : null,
         ...style,
         backgroundImage: `url("${src}")`,
         backgroundPosition: position,
