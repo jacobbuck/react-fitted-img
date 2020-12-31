@@ -95,16 +95,12 @@ describe('when object-fit and object-position is not supported', () => {
 
     test('replaces "fill" with "100% 100%" for background-size style', () => {
       const { getByRole } = render(<FittedImg src="/test.jpeg" fit="fill" />);
-      expect(getByRole('img')).toHaveStyle(`
-        background-size: 100% 100%;
-      `);
+      expect(getByRole('img')).toHaveStyle('background-size: 100% 100%');
     });
 
     test('replaces "none" with "auto" for background-size style', () => {
       const { getByRole } = render(<FittedImg src="/test.jpeg" fit="none" />);
-      expect(getByRole('img')).toHaveStyle(`
-        background-size: auto;
-      `);
+      expect(getByRole('img')).toHaveStyle('background-size: auto');
     });
   });
 
