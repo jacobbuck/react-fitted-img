@@ -1,14 +1,21 @@
 # Changelog
 
+## Unreleased
+
+### Changed
+
+- Updated [@babel/runtime](https://www.npmjs.com/package/@babel/runtime) dependency to v7.17.9.
+- Updated [prop-types](https://www.npmjs.com/package/prop-types) dependency to v15.8.1.
+- Updated [react](https://www.npmjs.com/package/react) peer-dependency to support v18.
+
 ## v2.0.0 - 2021-01-01
 
 ### Changed
 
 - **BREAKING** Changed CSS feature detection to happen only on component mount—using hooks!
 - **BREAKING** Changed JSX transform to use new React JSX runtime.
-- **BREAKING** Updated [react](https://www.npmjs.com/package/react) peerDependency to support new React JSX runtime.
+- **BREAKING** Updated [react](https://www.npmjs.com/package/react) peer-dependency to support new React JSX runtime.
 - Changed behaviour for server-side rendering to render supported `<img>` element.
-- Updated devDependencies.
 
 ### Removed
 
@@ -22,7 +29,7 @@
 
 ### Changed
 
-- Bumped up version of [@babel/runtime](https://www.npmjs.com/package/@babel/runtime) to v7.12.5.
+- Updated [@babel/runtime](https://www.npmjs.com/package/@babel/runtime) dependency to v7.12.5..
 - Updated render function to a named function.
 - Updated `propTypes` to only be defined in non-production environments.
 
@@ -42,19 +49,11 @@
 
 - Add ref forwarding to `FittedImg` component.
 
-### Changed
-
-- Updated devDependencies.
-
 ## v1.4.0 - 2020-07-10
 
 ### Added
 
 - Added [@babel/runtime](https://www.npmjs.com/package/@babel/runtime) for Babel helpers.
-
-### Changed
-
-- Updated devDependencies.
 
 ## v1.3.2 - 2020-05-25
 
@@ -81,36 +80,28 @@
 - Added `alt`, `height`, `style` and `width` default props.
 - Added ES Module build.
 
-### Changed
-
-- Updated devDependencies.
-
 ## v1.1.2 - 2020-04-27
 
-### Changed
-
-- Updated devDependencies.
+Maintenance release.
 
 ## v1.1.1 - 2019-06-22
 
 ### Changed
 
 - Updated CSS supports detection to be lazy.
-- Updated devDependencies.
 
 ## v1.1.0 - 2019-02-24
 
 ### Changed
 
 - Builds are now done with [Rollup](http://rollupjs.org).
-- Bumped up version of [prop-types](https://www.npmjs.com/package/prop-types) to v15.7.2.
-- Updated devDependencies.
+- Updated [prop-types](https://www.npmjs.com/package/prop-types) dependency to v15.7.2.
 
 ## v1.0.3 - 2017-08-21
 
 ### Changed
 
-- Updated [react](https://www.npmjs.com/package/react) peerDependency to support React 16.
+- Updated [react](https://www.npmjs.com/package/react) peer-dependency to support React 16.
 
 ## v1.0.2 - 2017-06-22
 
@@ -122,8 +113,8 @@
 
 ### Changed
 
-- **BREAKING** Requires [react](https://www.npmjs.com/package/react) peerDependency to be v15.6.0 or newer.
-- Bumped up version of [prop-types](https://www.npmjs.com/package/prop-types) to v15.6.0.
+- **BREAKING** Requires [react](https://www.npmjs.com/package/react) peer-dependency to be v15.6.0 or newer.
+- Updated [prop-types](https://www.npmjs.com/package/prop-types) dependency to v15.6.0.
 
 ## v1.0.0 - 2017-06-18
 
