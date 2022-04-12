@@ -11,7 +11,7 @@
     "coverage": "jest --coverage",
     "build": "rollup -c",
     "format": "prettier --write .",
-    "prepare": "npm run build",
+    "prepare": "npm run build && husky install",
     "preversion": "npm run test",
     "test": "jest"
   },
