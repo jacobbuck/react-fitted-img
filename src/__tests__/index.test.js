@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import FittedImg from '../';
 
 describe('when object-fit and object-position is supported', () => {
@@ -14,34 +14,30 @@ describe('when object-fit and object-position is supported', () => {
   });
 
   test('renders <img> element', () => {
-    const { getByRole } = render(<FittedImg src="/test.jpeg" />);
-    expect(getByRole('img')).toHaveAttribute('src', '/test.jpeg');
-    expect(getByRole('img')).toHaveProperty('tagName', 'IMG');
-    expect(getByRole('img')).toHaveStyle(`
+    render(<FittedImg src="/test.jpeg" />);
+    expect(screen.getByRole('img')).toHaveAttribute('src', '/test.jpeg');
+    expect(screen.getByRole('img')).toHaveProperty('tagName', 'IMG');
+    expect(screen.getByRole('img')).toHaveStyle(`
       object-fit: fill;
       object-position: 50% 50%;
     `);
   });
 
   test('handles fit and position props', () => {
-    const { getByRole } = render(
-      <FittedImg src="/test.jpeg" fit="cover" position="25% 75%" />
-    );
-    expect(getByRole('img')).toHaveStyle(`
+    render(<FittedImg src="/test.jpeg" fit="cover" position="25% 75%" />);
+    expect(screen.getByRole('img')).toHaveStyle(`
       object-fit: cover;
       object-position: 25% 75%;
     `);
   });
 
   test('handles alt prop', () => {
-    const { getByRole } = render(
-      <FittedImg src="/test.jpeg" alt="Test image" />
-    );
-    expect(getByRole('img')).toHaveAttribute('alt', 'Test image');
+    render(<FittedImg src="/test.jpeg" alt="Test image" />);
+    expect(screen.getByRole('img')).toHaveAttribute('alt', 'Test image');
   });
 
   test('handles style prop', () => {
-    const { getByRole } = render(
+    render(
       <FittedImg
         src="/test.jpeg"
         style={{
@@ -52,7 +48,7 @@ describe('when object-fit and object-position is supported', () => {
         }}
       />
     );
-    expect(getByRole('img')).toHaveStyle(`
+    expect(screen.getByRole('img')).toHaveStyle(`
       display: block;
       width: 100%;
       opacity: 0.5;
@@ -61,11 +57,9 @@ describe('when object-fit and object-position is supported', () => {
   });
 
   test('handles width and height props', () => {
-    const { getByRole } = render(
-      <FittedImg src="/test.jpeg" width={400} height={300} />
-    );
-    expect(getByRole('img')).toHaveAttribute('width', '400');
-    expect(getByRole('img')).toHaveAttribute('height', '300');
+    render(<FittedImg src="/test.jpeg" width={400} height={300} />);
+    expect(screen.getByRole('img')).toHaveAttribute('width', '400');
+    expect(screen.getByRole('img')).toHaveAttribute('height', '300');
   });
 });
 
@@ -75,10 +69,10 @@ describe('when object-fit and object-position is not supported', () => {
   });
 
   test('renders <span> fallback element', () => {
-    const { getByRole } = render(<FittedImg src="/test.jpeg" />);
-    expect(getByRole('img')).toHaveAttribute('role', 'img');
-    expect(getByRole('img')).toHaveProperty('tagName', 'SPAN');
-    expect(getByRole('img')).toHaveStyle(`
+    render(<FittedImg src="/test.jpeg" />);
+    expect(screen.getByRole('img')).toHaveAttribute('role', 'img');
+    expect(screen.getByRole('img')).toHaveProperty('tagName', 'SPAN');
+    expect(screen.getByRole('img')).toHaveStyle(`
       background-image: url("/test.jpeg");
       background-position: 50% 50%;
       background-repeat: no-repeat;
@@ -89,35 +83,31 @@ describe('when object-fit and object-position is not supported', () => {
 
   describe('handles fit and position props', () => {
     test('passes to background-postion and background-size styles', () => {
-      const { getByRole } = render(
-        <FittedImg src="/test.jpeg" fit="cover" position="25% 75%" />
-      );
-      expect(getByRole('img')).toHaveStyle(`
+      render(<FittedImg src="/test.jpeg" fit="cover" position="25% 75%" />);
+      expect(screen.getByRole('img')).toHaveStyle(`
         background-position: 25% 75%;
         background-size: cover;
       `);
     });
 
     test('replaces "fill" with "100% 100%" for background-size style', () => {
-      const { getByRole } = render(<FittedImg src="/test.jpeg" fit="fill" />);
-      expect(getByRole('img')).toHaveStyle('background-size: 100% 100%');
+      render(<FittedImg src="/test.jpeg" fit="fill" />);
+      expect(screen.getByRole('img')).toHaveStyle('background-size: 100% 100%');
     });
 
     test('replaces "none" with "auto" for background-size style', () => {
-      const { getByRole } = render(<FittedImg src="/test.jpeg" fit="none" />);
-      expect(getByRole('img')).toHaveStyle('background-size: auto');
+      render(<FittedImg src="/test.jpeg" fit="none" />);
+      expect(screen.getByRole('img')).toHaveStyle('background-size: auto');
     });
   });
 
   test('passes alt prop to aria-label', () => {
-    const { getByRole } = render(
-      <FittedImg src="/test.jpeg" alt="Test image" />
-    );
-    expect(getByRole('img')).toHaveAttribute('aria-label', 'Test image');
+    render(<FittedImg src="/test.jpeg" alt="Test image" />);
+    expect(screen.getByRole('img')).toHaveAttribute('aria-label', 'Test image');
   });
 
   test('handles style prop', () => {
-    const { getByRole } = render(
+    render(
       <FittedImg
         src="/test.jpeg"
         style={{
@@ -128,7 +118,7 @@ describe('when object-fit and object-position is not supported', () => {
         }}
       />
     );
-    expect(getByRole('img')).toHaveStyle(`
+    expect(screen.getByRole('img')).toHaveStyle(`
       display: block;
       width: 100%;
       opacity: 0.5;
@@ -137,10 +127,8 @@ describe('when object-fit and object-position is not supported', () => {
   });
 
   test('handles width and height props', () => {
-    const { getByRole } = render(
-      <FittedImg src="/test.jpeg" width={400} height={300} />
-    );
-    expect(getByRole('img')).toHaveStyle(`
+    render(<FittedImg src="/test.jpeg" width={400} height={300} />);
+    expect(screen.getByRole('img')).toHaveStyle(`
       width: 400px;
       height: 300px;
     `);
